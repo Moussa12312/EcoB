@@ -1,0 +1,43 @@
+# ==========================================================================
+# ECOB University - Configuration Apache
+# Permet l'envoi de photos volumineuses depuis l'espace administrateur
+# ==========================================================================
+
+<IfModule mod_php.c>
+    php_value upload_max_filesize 20M
+    php_value post_max_size 28M
+    php_value max_file_uploads 20
+    php_value memory_limit 256M
+    php_value max_execution_time 120
+</IfModule>
+<IfModule php_module>
+    php_value upload_max_filesize 20M
+    php_value post_max_size 28M
+    php_value max_file_uploads 20
+    php_value memory_limit 256M
+    php_value max_execution_time 120
+</IfModule>
+<IfModule php8_module>
+    php_value upload_max_filesize 20M
+    php_value post_max_size 28M
+    php_value max_file_uploads 20
+    php_value memory_limit 256M
+    php_value max_execution_time 120
+</IfModule>
+
+# Les pages dynamiques ne doivent jamais être servies depuis le cache du navigateur
+<IfModule mod_headers.c>
+    <FilesMatch "\.php$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# Dossiers techniques inaccessibles depuis le navigateur
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^logs/ - [F,L]
+    RewriteRule ^config/ - [F,L]
+    RewriteRule ^libs/ - [F,L]
+</IfModule>

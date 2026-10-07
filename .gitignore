@@ -1,0 +1,13 @@
+# Ignorer les fichiers temporaires et caches
+*.tmp
+*.log
+logs/*.log
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+desktop.ini
+.DS_Store
+
+# Fichiers d'environnement locaux (si créés)
+.env.local
+.env.*.local
